@@ -1,5 +1,6 @@
 package com.thoughtworks;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -12,17 +13,35 @@ import static org.mockito.Mockito.verify;
 
 public class TictactoeTest {
 
+    private PrintStream printStream;
+    private Tictactoe game;
 
+    @Before
+    public void setUp(){
+        printStream = mock(PrintStream.class);
+        game = new Tictactoe(printStream);
+    }
+    
     @Test
     public void shouldDrawBoardWhenStarts(){
-        PrintStream printStream = mock(PrintStream.class);
-        Tictactoe game = new Tictactoe(printStream);
+        game.printBoard();
 
-        game.start();
-
-        verify(printStream).print(contains("  |   |\n" +
+        verify(printStream).println(contains(
+                "  |   | \n" +
                 "---------\n" +
-                "  |   |\n" +
+                "  |   | \n" +
+                "---------\n" +
+                "  |   |"));
+    }
+
+    @Test
+    public void shouldPrintXinUpperLeftWhenUpdatingBoardWithInput1(){
+        game.updateBoard(0);
+
+        verify(printStream).println(contains(
+                " X|   | \n" +
+                "---------\n" +
+                "  |   | \n" +
                 "---------\n" +
                 "  |   |"));
     }
