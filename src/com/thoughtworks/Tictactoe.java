@@ -26,16 +26,19 @@ public class Tictactoe {
                         "---------\n" +
                         " " + board[6] + "| " + board[7] + " |" + board[8] + "\n");
 
-        boolean gameOver = true;
-        for (char c : board) {
-            if (c == ' ') {
-                gameOver = false;
-                break;
-            }
-        }
-        if (!gameOver) {
+        if(noDraw()) {
             printTurn();
         }
+    }
+
+    public boolean noDraw() {
+        for (char c : board) {
+            if (c == ' ') {
+                return true;
+            }
+        }
+        return false;
+
     }
 
     public void printTurn() {

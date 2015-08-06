@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
@@ -90,8 +91,11 @@ public class TictactoeTest {
     }
 
     @Test
-    public void should(){
-
+    public void shouldNotPrintPlayerTurnWhenDraw(){
+        for (int i = 0; i < 9; i++) {
+            game.updateBoard(i);
+        }
+        assertThat(game.noDraw(), is(false));
     }
 
 
