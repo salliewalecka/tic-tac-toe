@@ -9,11 +9,13 @@ public class Console {
     private BufferedReader reader;
     private PrintStream printStream;
     private Tictactoe game;
+    private final int boardSize;
 
     public Console(PrintStream printStream, BufferedReader reader, Tictactoe game) {
         this.game=game;
         this.printStream=printStream;
         this.reader=reader;
+        boardSize=game.boardSize;
     }
 
     public int promptMove() {
@@ -43,12 +45,12 @@ public class Console {
 
     public void run() {
         int i=0;
-        while(i<2){
+        while(i<boardSize){
             if( makeMove()){
                 i++;
             }
         }
-
+        printStream.println("Game is a Draw");
     }
 }
 

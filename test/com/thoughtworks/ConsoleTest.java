@@ -79,8 +79,33 @@ public class ConsoleTest {
         console.run();
 
         verify(game, times(1)).updateBoard(0);
-        verify(game, times(1)).updateBoard(1);
+        verify(game, atLeast(1)).updateBoard(1);
     }
 
+    @Test
+    public void shouldPromptMovesUntilBoardIsFilled() throws IOException {
+        when(reader.readLine()).thenReturn("1").thenReturn("2").thenReturn("3")
+                .thenReturn("4").thenReturn("5").thenReturn("6").thenReturn("7")
+                .thenReturn("8").thenReturn("9")
+                .thenReturn("1");
+        when(game.updateBoard(anyInt())).thenReturn(true);
 
+        console.run();
+
+        verify(game, times(9)).updateBoard(anyInt());
+
+    }
+
+    @Test
+    public void shouldPrintGameOverWhenBoardIsFilled() throws IOException {
+        when(reader.readLine()).thenReturn("1").thenReturn("2").thenReturn("3")
+                .thenReturn("4").thenReturn("5").thenReturn("6").thenReturn("7")
+                .thenReturn("8").thenReturn("9");
+        when(game.updateBoard(anyInt())).thenReturn(true);
+
+        console.run();
+
+        verify(printStream).println("Game is a Draw");
+
+    }
 }

@@ -87,7 +87,12 @@ public class TictactoeTest {
         game.updateBoard(1);
 
         verify(printStream).println("Location already taken. Try again!");
+    }
+
+    @Test
+    public void should(){
 
     }
+
 
 }
