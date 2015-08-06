@@ -9,9 +9,9 @@ public class TictactoeApp {
     public static void main(String[] args) {
 
         Tictactoe game= new Tictactoe(System.out);
-        Consule consule= new Consule(System.out,  new BufferedReader(new InputStreamReader(System.in)), game);
-        consule.start();
-        consule.makeMove();
+        Console console = new Console(System.out,  new BufferedReader(new InputStreamReader(System.in)), game);
+        console.start();
+        console.run();
     }
 
 

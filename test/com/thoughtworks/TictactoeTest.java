@@ -46,5 +46,35 @@ public class TictactoeTest {
                 "  |   |"));
     }
 
+    @Test
+    public void shouldPrintPlayer1then2WhenUpdatesBoardTwice(){
+        game.printBoard();
+        verify(printStream).println(contains("Player 1's Turn"));
+        game.updateBoard(1);
+        verify(printStream).println(contains("Player 2's Turn"));
+    }
+
+    @Test
+    public void shouldPrintXThenOWhenUpdatesBoardTwice(){
+        game.updateBoard(1);
+        verify(printStream).println(contains("X"));
+        game.updateBoard(2);
+        verify(printStream).println(contains("O"));
+    }
+
+    @Test
+    public void shouldKeepBothXAndOWhenUpdatesTwice(){
+        game.updateBoard(0);
+        game.updateBoard(1);
+        verify(printStream).println(contains(
+                " X| O | \n" +
+                        "---------\n" +
+                        "  |   | \n" +
+                        "---------\n" +
+                        "  |   |"));
+
+    }
+
+
 
 }

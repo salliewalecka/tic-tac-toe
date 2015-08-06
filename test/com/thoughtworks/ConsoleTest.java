@@ -13,9 +13,9 @@ import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.*;
 
 
-public class ConsuleTest {
+public class ConsoleTest {
 
-    private Consule consule;
+    private Console console;
     private Tictactoe game;
     private PrintStream printStream;
     private BufferedReader reader;
@@ -25,34 +25,31 @@ public class ConsuleTest {
         printStream = mock(PrintStream.class);
         game = mock(Tictactoe.class);
         reader= mock(BufferedReader.class);
-        consule = new Consule(printStream, reader, game);
+        console = new Console(printStream, reader, game);
     }
 
     @Test
     public void shouldHaveBoardPrintWhenStart(){
-
-        consule.start();
+        console.start();
 
         verify(game, times(1)).printBoard();
     }
 
     @Test
     public void shouldPromptPlayerToMoveWhenPromptsMove() throws IOException {
-
         when(reader.readLine()).thenReturn("1");
 
-        consule.promptMove();
+        console.promptMove();
 
-        verify(printStream).println(contains("Player 1: make a move by entering an integer from 1-9"));
+        verify(printStream).println(contains("Make a move by entering an integer from 1-9"));
 
     }
 
     @Test
     public void shouldTakePlayersInputWhenPromptsPlayer() throws IOException {
-
         when(reader.readLine()).thenReturn("1");
 
-        consule.promptMove();
+        console.promptMove();
 
         verify(reader, times(1)).readLine();
 
@@ -62,17 +59,25 @@ public class ConsuleTest {
     public void shouldRecordPlayersInputWhenPromptsPlayer() throws IOException {
         when(reader.readLine()).thenReturn("1");
 
-        assertThat(consule.promptMove(), is(0));
+        assertThat(console.promptMove(), is(0));
     }
 
     @Test
-    public void shouldPrintNewBoardWhenPlayerMoces() throws IOException {
+    public void shouldPrintNewBoardWhenPlayerMoves() throws IOException {
         when(reader.readLine()).thenReturn("1");
 
-        consule.makeMove();
+        console.makeMove();
 
         verify(game, times(1)).updateBoard(0);
     }
 
+    @Test
+    public void shouldPromptTwoMovesWhenStarts() throws IOException {
+        when(reader.readLine()).thenReturn("1");
+
+        console.run();
+
+        verify(game, times(2)).updateBoard(0);
+    }
 
 }
