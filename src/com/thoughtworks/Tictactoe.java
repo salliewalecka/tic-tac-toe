@@ -32,15 +32,20 @@ public class Tictactoe {
         printStream.println("Player "+(turn+1)+"'s Turn");
     }
 
-    public void updateBoard(int i) {
-        if(turn==0){
-            board[i]='X';
-        }
-        else{
-            board[i]='O';
-        }
-        turn= (turn+1)%2;
-        printBoard();
+    public boolean updateBoard(int i) {
+         if (board[i] == ' '){
+             if(turn==0){
+                 board[i]='X';
+             }
+             else{
+                 board[i]='O';
+             }
+             turn= (turn+1)%2;
+             printBoard();
+             return true;
+         }
+        printStream.println("Location already taken. Try again!");
+        return false;
     }
 
 }

@@ -47,7 +47,7 @@ public class TictactoeTest {
     }
 
     @Test
-    public void shouldPrintPlayer1then2WhenUpdatesBoardTwice(){
+    public void shouldPrintPlayer1Then2WhenUpdatesBoardTwice(){
         game.printBoard();
         verify(printStream).println(contains("Player 1's Turn"));
         game.updateBoard(1);
@@ -75,6 +75,19 @@ public class TictactoeTest {
 
     }
 
+    @Test
+    public void shouldNotUpdateWhenPlaceTaken(){
+        game.updateBoard(0);
+        assertFalse(game.updateBoard(0));
+    }
 
+    @Test
+    public void shouldAlertPlayerWhenInvalidChoice(){
+        game.updateBoard(1);
+        game.updateBoard(1);
+
+        verify(printStream).println("Location already taken. Try again!");
+
+    }
 
 }

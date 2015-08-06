@@ -73,11 +73,14 @@ public class ConsoleTest {
 
     @Test
     public void shouldPromptTwoMovesWhenStarts() throws IOException {
-        when(reader.readLine()).thenReturn("1");
+        when(reader.readLine()).thenReturn("1").thenReturn("2");
+        when(game.updateBoard(anyInt())).thenReturn(true);
 
         console.run();
 
-        verify(game, times(2)).updateBoard(0);
+        verify(game, times(1)).updateBoard(0);
+        verify(game, times(1)).updateBoard(1);
     }
+
 
 }

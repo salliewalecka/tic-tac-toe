@@ -37,13 +37,18 @@ public class Console {
         game.printBoard();
     }
 
-    public void makeMove() {
-        game.updateBoard(promptMove());
+    public boolean makeMove() {
+        return game.updateBoard(promptMove());
     }
 
     public void run() {
-        makeMove();
-        makeMove();
+        int i=0;
+        while(i<2){
+            if( makeMove()){
+                i++;
+            }
+        }
+
     }
 }
 
