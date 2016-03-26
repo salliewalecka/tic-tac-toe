@@ -16,7 +16,7 @@ public class TictactoeApp {
         Player player2= new Player(System.out, new BufferedReader(new InputStreamReader(System.in)), board, 'O');
         Game game = new Game(player1, player2, board);
         board.printBoard();
-        game.run();
+//        game.run();
 
     }
 

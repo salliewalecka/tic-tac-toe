@@ -8,7 +8,7 @@ public class Board {
 
     private PrintStream printStream;
     private List<Character> positions;
-    private int turn = 0;
+//    private int turn = 0;
 
     public Board(PrintStream printStream, List<Character> positions) {
         this.printStream = printStream;
@@ -25,26 +25,26 @@ public class Board {
                         " " + positions.get(6) + "| " + positions.get(7) + " |" + positions.get(8) + "\n");
     }
 
-    public boolean updateBoard(int i, char symbol) {
-        if (positions.get(i) == ' ') {
-            positions.set(i, symbol);
-            printBoard();
-            return true;
-        }
-        printStream.println("Location already taken. Try again!");
-        return false;
-    }
-
-
-    public boolean filledBoard() {
-        for (char c : positions) {
-            if (c == ' ') {
-                return false;
-            }
-        }
-        printStream.println("Game is a Draw");
-        return true;
-    }
+//    public boolean updateBoard(int i, char symbol) {
+//        if (positions.get(i) == ' ') {
+//            positions.set(i, symbol);
+//            printBoard();
+//            return true;
+//        }
+//        printStream.println("Location already taken. Try again!");
+//        return false;
+//    }
+//
+//
+//    public boolean filledBoard() {
+//        for (char c : positions) {
+//            if (c == ' ') {
+//                return false;
+//            }
+//        }
+//        printStream.println("Game is a Draw");
+//        return true;
+//    }
 
    /* //-1 if no winner yet
     public int winner() {

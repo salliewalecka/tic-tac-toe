@@ -17,19 +17,19 @@ public class Game {
         this.board = board;
     }
 
-
-    public void run() {
-        int i=0;
-        while(!board.filledBoard()){
-            if(whoseTurn(i).makeMove()){
-                i++;
-            }
-        }
-    }
-
-    public Player whoseTurn(int toggle){
-        if(toggle%2==0){ return player1;}
-        return player2;
-    }
+//
+//    public void run() {
+//        int i=0;
+//        while(!board.filledBoard()){
+//            if(whoseTurn(i).makeMove()){
+//                i++;
+//            }
+//        }
+//    }
+//
+//    public Player whoseTurn(int toggle){
+//        if(toggle%2==0){ return player1;}
+//        return player2;
+//    }
 }
 

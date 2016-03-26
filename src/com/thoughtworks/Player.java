@@ -37,8 +37,11 @@ public class Player {
     }
 
     public boolean makeMove() {
-        return game.updateBoard(getMove(),symbol);
+        return true;
     }
+//    public boolean makeMove() {
+//        return game.updateBoard(getMove(),symbol);
+//    }
 
 
 }
